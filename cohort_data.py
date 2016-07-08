@@ -23,10 +23,15 @@ def unique_houses(filename):
         line = line.rstrip()
         word = line.split('|')
 
-        houses = houses.add(word[2])
-    print houses
+        if word[4] != "TA" and word[4] != "I":
+            houses.add(word[2])
+
+    cohort_info.close()
+
     return houses
+
 unique_houses("cohort_data.txt")
+
 
 def sort_by_cohort(filename):
     """TODO: Sort students by cohort.
