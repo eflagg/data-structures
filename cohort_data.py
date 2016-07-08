@@ -50,10 +50,32 @@ def sort_by_cohort(filename):
     summer_15 = []
     tas = []
 
-    # Code goes here
+    cohort_info = open(filename)
+    
+    for line in cohort_info:
+        line = line.rstrip()
+        word = line.split('|')
+        full_name = word[0] + " " + word[1]
 
+        if word[4] == "Winter 2015":
+            winter_15.append(full_name)
+            winter_15.sort()
+        elif word[4] == "Spring 2015":
+            spring_15.append(full_name)
+            spring_15.sort()
+        elif word[4] == "Summer 2015":
+            summer_15.append(full_name)
+            summer_15.sort()
+        elif word[4] == "TA":
+            tas.append(full_name)
+            tas.sort()    
+        
+    all_students = [winter_15, spring_15, summer_15, tas]
+
+    print all_students
     return all_students
 
+sort_by_cohort("cohort_data.txt")
 
 def students_by_house(filename):
     """TODO: Sort students by house.
